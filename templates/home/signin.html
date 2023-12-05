@@ -1,0 +1,38 @@
+
+{% extends 'home/base.html' %}
+{% block body %}
+
+
+  <div class=" container mt-4 col-md-7">
+    <form method='POST' class="needs-validation form-control p-4 " novalidate>
+      {% csrf_token %}
+        <div class="mb-3">
+          <label for="usernameInput" class="form-label fw-bold"> Username </label>
+          <input type="text" class="form-control" id="usernameInput" name="username" required>
+          <div class="invalid-feedback">
+            Enter valid username.
+          </div>
+          
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label fw-bold">Password</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+          <div class="invalid-feedback">
+            Enter valid password.
+          </div>
+        </div>
+ 
+        <div class="d-grid">
+            <button type="submit" class="btn btn-primary d-block">Sign In</button>
+        </div>
+    </form>
+</div>
+
+
+{% block scripts %}
+<script>
+
+</script>
+{% endblock scripts %}
+
+{% endblock body %}

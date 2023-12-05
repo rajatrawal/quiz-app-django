@@ -1,0 +1,68 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'home/css/quiz.css' %}">
+{% endblock css %}
+{% block body %}
+
+<div class='col-md-8  mx-auto  '>
+    <div class="mb-4 fw-semibold text-center  d-flex justify-content-between form-control p-3 text-dark">
+        <h5> Quiz On {{category|title}}</h5>
+        <h5>Marks : <span id="marks">
+                {{quiz.marks}}
+            </span>/{{quiz.category.total_marks}}</h5>
+    </div>
+    {% for question in page_obj.object_list %}
+    <form action="" class="mt-4 p-4 text-capitalize form-control box_shadow">
+        <div class="fw-bold text-center fs-5 d-flex justify-content-between  p-2">
+
+            <span id="{{question.uid}}" class="questionP">{{page_obj.number}}. {{question.question}}?</span>
+            <span>{{question.mark}} Marks</span>
+        </div>
+
+        <div class="form-check">
+
+            {% for answer in question.answers.all %}
+            <ul class="list-group">
+                <li class="list-group-item list-group-item-action list-group-item-primary mt-3 answerList">
+                    <input class="form-check-input me-1 answerInput" value='{{answer.answer}}' type="radio"
+                        id="{{answer.uid}}" name="answerInput">
+                    <label class="form-check-label d-block fw-semibold" for="{{answer.uid}}">
+                        {{answer.answer}}</label>
+                </li>
+            </ul>
+            {% endfor %}
+        </div>
+
+        <div class="mt-2 p-3 d-flex justify-content-between">
+            {% if page_obj.has_previous %}
+            <a class="btn btn-outline-primary" href="?page={{page_obj.previous_page_number}}&category={{category}}">
+
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-left-square-fill mr-2" viewBox="0 0 16 16">
+                    <path
+                        d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z" />
+                </svg>
+                Previous
+            </a>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <a class="btn btn-primary " href="?page={{page_obj.next_page_number}}&category={{category}}">Next
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                    class="bi bi-arrow-right-square-fill ml-2" viewBox="0 0 16 16">
+                    <path
+                        d="M0 14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v12zm4.5-6.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5a.5.5 0 0 1 0-1z" />
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+
+    </form>
+    {% endfor %}
+</div>
+
+{% endblock body %}
+
+{% block js %}
+<script src="{% static 'home/js/quiz.js' %}"></script>
+{% endblock js %}

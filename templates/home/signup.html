@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% load static %}
+{% block body %}
+<div id="alert">
+
+</div>
+<div class=" container mt-4 col-md-7">
+  <form method='POST' class="needs-validation form-control p-4 box_shadow" novalidate>
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="usernameInput" class="form-label fw-bold"> Username </label>
+      <input type="text" class="form-control" id="usernameInput" name="username" required>
+      <div class="invalid-feedback">
+        Please Enter Valid Username.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password1Input" class="form-label fw-bold">Password</label>
+      <input type="password" class="form-control" id="password1Input" name="password1" value="" required>
+      <div class="invalid-feedback">
+        Please Enter Valid Password.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="password2Input" class="form-label fw-bold">Confirm Password</label>
+      <input type="password" class="form-control" id="password2Input" name="password2" value="" required>
+      <div class="invalid-feedback">
+        Please Enter Valid Password.
+      </div>
+    </div>
+    <div class="d-grid">
+      <button type="submit" class="btn btn-primary d-block " id='submitButton'>Submit</button>
+    </div>
+  </form>
+</div>
+
+
+
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM="
+  crossorigin="anonymous"></script>
+<script src="{% static 'home/js/signup.js' %}"></script>
+
+{% endblock js %}
+
+{% endblock body %}

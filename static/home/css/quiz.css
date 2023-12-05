@@ -1,0 +1,21 @@
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
+}
+
+
+.form-check-label {
+    cursor: pointer;
+}
+
+.answerList {
+    transition: all .3s ease-in-out;
+}
+
+.writeAnswerDiv {
+    display: block;
+
+}

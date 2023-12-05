@@ -1,0 +1,52 @@
+{% extends 'home/base.html' %}
+{% block title %}
+Quiz App
+{% endblock title %}
+{% block body %}
+
+
+<div class="container-fluid">
+    <div class="p-3 mx-auto d-flex justify-content-around">
+        {% for category in categories %}
+        <form action="" class=" ">
+            <div class="card box_shadow" style="width: 18rem;">
+                <img src="{{category.image.url}}" class="card-img-top card_image" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{category.name|title}}</h5>
+                    <p class="card-text">{{category.description|truncatechars:"50"}}</p>
+                    <div class="d-flex justify-content-between">
+                        <div class="text-muted">
+                            {{category.total_questions}} Questions
+                        </div>
+                        <div class="text-muted">
+                            {{category.total_marks}} Marks
+                        </div>
+                    </div>
+                    <div class="d-grid mt-4">
+                        <input type="hidden" name="category" value="{{category.name}}">
+                        <button class="btn btn-primary">Give Quiz</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+        {% endfor %}
+    </div>
+    <!-- <form action="" class="form-control box_shadow p-3">
+                    <label for="selectCategory " class="mb-2 fw-semibold">Select Category</label>
+                    <select name="category" id="selectCategory" class="form-control">
+                        <option value="">Choose</option>
+                        {% for category in categories %}
+                        <option value="{{category.name}}">{{category.name|title}} </option>
+                        {% endfor %}
+
+                    </select>
+                    <div class="d-grid mt-4">
+                        <button class="btn btn-primary">Submit</button>
+                    </div>
+                </form> -->
+
+
+</div>
+</div>
+
+{% endblock body %}
