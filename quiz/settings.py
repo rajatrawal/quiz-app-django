@@ -28,7 +28,7 @@ SECRET_KEY = config('KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['']
+ALLOWED_HOSTS = ['quiz-app-django.onrender.com']
 
 
 # Application definition
